@@ -29,7 +29,7 @@ public class AccountTerminal {
 
     }
 
-    private static String handleInput(BankAccountCommand bankAccountCommand, Scanner scanner) {
+    private static String handleInput(BankAccountCommand bankAccountCommand, Scanner scanner) throws BankAccountInvalidInputException {
         return bankAccountCommand.execute(scanner);
     }
 

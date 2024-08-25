@@ -1,5 +1,6 @@
 package br.com.dio.lab.conta.banco.command;
 
+import br.com.dio.lab.conta.banco.exception.BankAccountInvalidInputException;
 import br.com.dio.lab.conta.banco.validator.NameValidator;
 
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public final class NameCommand extends BankAccountCommand {
     private static final NameValidator NAME_VALIDATOR = new NameValidator();
 
     @Override
-    public String execute(Scanner scanner) {
+    public String execute(Scanner scanner) throws BankAccountInvalidInputException {
         printInputMessage(NAME_INPUT_MESSAGE);
 
         String name = getInputValue(scanner::nextLine);

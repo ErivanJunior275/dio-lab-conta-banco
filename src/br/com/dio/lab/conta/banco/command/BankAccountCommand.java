@@ -8,13 +8,13 @@ import java.util.concurrent.Callable;
 
 public abstract class BankAccountCommand {
 
-    public abstract String execute(Scanner scanner);
+    public abstract String execute(Scanner scanner) throws BankAccountInvalidInputException;
 
     public void printInputMessage(String inputMessage) {
         System.out.println(inputMessage);
     }
 
-    public <T> T getInputValue(Callable<T> scannerInput) {
+    public <T> T getInputValue(Callable<T> scannerInput) throws BankAccountInvalidInputException {
 
         try {
             return scannerInput.call();

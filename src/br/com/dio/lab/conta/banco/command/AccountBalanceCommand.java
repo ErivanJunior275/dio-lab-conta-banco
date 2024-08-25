@@ -1,5 +1,6 @@
 package br.com.dio.lab.conta.banco.command;
 
+import br.com.dio.lab.conta.banco.exception.BankAccountInvalidInputException;
 import br.com.dio.lab.conta.banco.util.BankAccountFormatterUtil;
 import br.com.dio.lab.conta.banco.validator.AccountBalanceValidator;
 
@@ -12,7 +13,7 @@ public final class AccountBalanceCommand extends BankAccountCommand {
     private static final AccountBalanceValidator ACCOUNT_BALANCE_VALIDATOR = new AccountBalanceValidator();
 
     @Override
-    public String execute(Scanner scanner) {
+    public String execute(Scanner scanner) throws BankAccountInvalidInputException {
         printInputMessage(ACCOUNT_BALANCE_INPUT_MESSAGE);
 
         Double accountBalance = getInputValue(scanner::nextDouble);

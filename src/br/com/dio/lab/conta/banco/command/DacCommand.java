@@ -1,5 +1,6 @@
 package br.com.dio.lab.conta.banco.command;
 
+import br.com.dio.lab.conta.banco.exception.BankAccountInvalidInputException;
 import br.com.dio.lab.conta.banco.validator.DacValidator;
 
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public final class DacCommand extends BankAccountCommand {
     private static final DacValidator DAC_VALIDATOR = new DacValidator();
 
     @Override
-    public String execute(Scanner scanner) {
+    public String execute(Scanner scanner) throws BankAccountInvalidInputException {
         printInputMessage(DAC_INPUT_MESSAGE);
 
         Integer dac = getInputValue(scanner::nextInt);

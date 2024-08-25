@@ -7,7 +7,7 @@ import br.com.dio.lab.conta.banco.exception.BankAccountInvalidInputException;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class ContaTerminal {
+public class AccountTerminal {
 
     public static void main(String[] args) {
         System.out.println("Bem vindo ao Terminal de Conta Bancária:");

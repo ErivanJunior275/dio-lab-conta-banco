@@ -1,64 +1,40 @@
 package br.com.dio.lab.conta.banco;
 
-import br.com.dio.lab.conta.banco.domain.ContaCliente;
-import br.com.dio.lab.conta.banco.exceptions.ContaBancoException;
-import br.com.dio.lab.conta.banco.validators.*;
+import br.com.dio.lab.conta.banco.command.*;
+import br.com.dio.lab.conta.banco.domain.ClientAccount;
+import br.com.dio.lab.conta.banco.exception.BankAccountInvalidInputException;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ContaTerminal {
 
     public static void main(String[] args) {
-        System.out.println("Bem vindo ao Terminal de NumeroConta Bancária:");
+        System.out.println("Bem vindo ao Terminal de Conta Bancária:");
 
-        try (Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(System.in).useLocale(Locale.of("pt", "BR"))) {
 
-            String nome = handleNameInput(scanner);
-            String agencia = handleAgencyInput(scanner);
-            String conta = handleAccountNumberInput(scanner);
-            String dac = handleDacInput(scanner);
-            String saldo = handleAccountBalanceInput(scanner);
+            String name = handleInput(new NameCommand(), scanner);
+            String agency = handleInput(new AgencyCommand(), scanner);
+            String accountNumber = handleInput(new AccountNumberCommand(), scanner);
+            String dac = handleInput(new DacCommand(), scanner);
+            String accountBalance = handleInput(new AccountBalanceCommand(), scanner);
 
-            ContaCliente contaCliente = new ContaCliente(nome, agencia, conta, dac, saldo);
+            ClientAccount clientAccount = new ClientAccount(name, agency, accountNumber, dac, accountBalance);
 
-            System.out.printf("Olá %s, obrigado por criar uma conta em nosso banco, sua agência é " +
-                            "%s, conta %s-%s e seu saldo de %s já está disponível para saque%n",
-                    contaCliente.nome(), contaCliente.agencia(), contaCliente.numeroConta(),
-                    contaCliente.dac(), contaCliente.saldo());
-        } catch (ContaBancoException cbex) {
-            System.out.println(cbex.getMessage());
+            printCreatedAccountMessage(clientAccount);
+        } catch (BankAccountInvalidInputException bankAccountInvalidInputException) {
+            System.out.println(bankAccountInvalidInputException.getMessage());
         }
 
     }
 
-    private static String handleNameInput(Scanner scanner) {
-        System.out.println("Para iniciarmos seu cadastro, por favor, digite seu nome:");
-
-        return new NomeValidator(scanner).validateAndGetValue();
+    private static String handleInput(BankAccountCommand bankAccountCommand, Scanner scanner) {
+        return bankAccountCommand.execute(scanner);
     }
 
-    private static String handleAgencyInput(Scanner scanner) {
-        System.out.println("Por favor, digite o número de sua agência:");
-
-        return new AgenciaValidator(scanner).validateAndGetValue();
-    }
-
-    private static String handleAccountNumberInput(Scanner scanner) {
-        System.out.println("Estamos quase lá. Agora, por favor, digite o número da sua conta (sem dígito verificador):");
-
-        return new NumeroContaValidator(scanner).validateAndGetValue();
-    }
-
-    private static String handleDacInput(Scanner scanner) {
-        System.out.println("Por favor, insira o número do dígito verificador:");
-
-        return new DacContaValidator(scanner).validateAndGetValue();
-    }
-
-    private static String handleAccountBalanceInput(Scanner scanner) {
-        System.out.println("Por favor, insira o número do dígito verificador:");
-
-        return new SaldoContaValidator(scanner).validateAndGetValue();
+    private static void printCreatedAccountMessage(ClientAccount clientAccount) {
+        System.out.println(clientAccount.getCreatedAccountMessage());
     }
 
 }

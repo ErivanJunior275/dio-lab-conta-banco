@@ -2,7 +2,7 @@ package br.com.dio.lab.conta.banco.validator;
 
 import br.com.dio.lab.conta.banco.exception.DacInvalidInputException;
 
-public class DacValidator implements BankAccountValidator<Integer> {
+public final class DacValidator implements BankAccountValidator<Integer> {
 
     @Override
     public void validate(Integer dac) throws DacInvalidInputException {

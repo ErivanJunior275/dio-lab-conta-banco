@@ -4,7 +4,7 @@ import br.com.dio.lab.conta.banco.validator.AccountNumberValidator;
 
 import java.util.Scanner;
 
-public class AccountNumberCommand extends BankAccountCommand {
+public final class AccountNumberCommand extends BankAccountCommand {
 
     private static final String ACCOUNT_NUMBER_INPUT_MESSAGE = "Agora, por favor, digite o número da sua conta (sem dígito verificador):";
 

@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NameValidator implements BankAccountValidator<String> {
+public final class NameValidator implements BankAccountValidator<String> {
 
     private static final String UPPERCASE = "(?:[\\p{Lu}&&[\\p{IsLatin}]])";
     private static final String LOWERCASE = "(?:[\\p{Ll}&&[\\p{IsLatin}]])";

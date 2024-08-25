@@ -5,7 +5,7 @@ import br.com.dio.lab.conta.banco.validator.AccountBalanceValidator;
 
 import java.util.Scanner;
 
-public class AccountBalanceCommand extends BankAccountCommand {
+public final class AccountBalanceCommand extends BankAccountCommand {
 
     private static final String ACCOUNT_BALANCE_INPUT_MESSAGE = "Por favor, insira o saldo inicial que deseja depositar na conta:";
 

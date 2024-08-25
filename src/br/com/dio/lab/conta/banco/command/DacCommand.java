@@ -4,7 +4,7 @@ import br.com.dio.lab.conta.banco.validator.DacValidator;
 
 import java.util.Scanner;
 
-public class DacCommand extends BankAccountCommand {
+public final class DacCommand extends BankAccountCommand {
 
     private static final String DAC_INPUT_MESSAGE = "Estamos quase lá. Por favor, insira o número do dígito verificador:";
 

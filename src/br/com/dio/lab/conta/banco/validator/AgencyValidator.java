@@ -2,7 +2,7 @@ package br.com.dio.lab.conta.banco.validator;
 
 import br.com.dio.lab.conta.banco.exception.AgencyInvalidInputException;
 
-public class AgencyValidator implements BankAccountValidator<String> {
+public final class AgencyValidator implements BankAccountValidator<String> {
 
     @Override
     public void validate(final String agency) throws AgencyInvalidInputException {

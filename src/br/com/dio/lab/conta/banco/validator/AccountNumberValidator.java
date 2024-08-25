@@ -2,7 +2,7 @@ package br.com.dio.lab.conta.banco.validator;
 
 import br.com.dio.lab.conta.banco.exception.AccountNumberInvalidInputException;
 
-public class AccountNumberValidator implements BankAccountValidator<String> {
+public final class AccountNumberValidator implements BankAccountValidator<String> {
 
     @Override
     public void validate(final String accountNumber) throws AccountNumberInvalidInputException {

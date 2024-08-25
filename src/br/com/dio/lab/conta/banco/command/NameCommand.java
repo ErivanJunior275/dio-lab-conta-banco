@@ -4,7 +4,7 @@ import br.com.dio.lab.conta.banco.validator.NameValidator;
 
 import java.util.Scanner;
 
-public class NameCommand extends BankAccountCommand {
+public final class NameCommand extends BankAccountCommand {
 
     private static final String NAME_INPUT_MESSAGE = "Para iniciarmos seu cadastro, por favor, digite seu name:";
 

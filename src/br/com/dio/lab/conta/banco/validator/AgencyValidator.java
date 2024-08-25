@@ -2,9 +2,6 @@ package br.com.dio.lab.conta.banco.validator;
 
 import br.com.dio.lab.conta.banco.exception.AgencyInvalidInputException;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class AgencyValidator implements BankAccountValidator<String> {
 
     @Override
